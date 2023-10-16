@@ -1,6 +1,3 @@
-# MyApp
-This is an Android mobile application developed using the React Native framework. It represents the result of my personal practice and experimentation.
-
 # 配置
 
 ## 使用 NavigationContainer 的配置操作
@@ -44,6 +41,23 @@ That usually happens when you install all packages to add navigation without ter
 1.npm install --save react-native-vector-icons
 2.Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+
+
+# 发布
+
+## 清除缓存
+npx react-native start --reset-cache
+
+## 启动模拟器
+yarn android
+
+## 生成发布版本的APK文件
+cd android
+./gradlew bundleRelease
+
+### 文件位置
+android/app/build/outputs/bundle/release/app-release.aab
+
 
 # 命令
 
