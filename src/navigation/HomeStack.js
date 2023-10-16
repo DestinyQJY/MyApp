@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import TutorialStack from './TutorialStack'
 import ProductLibraryScreen from '../screens/Home/ProductLibraryScreen'
@@ -6,7 +6,7 @@ import VirtualTryOnScreen from '../screens/Home/VirtualTryOnScreen'
 import ShoppingCartScreen from '../screens/Home/ShoppingCartScreen'
 import SettingsScreen from '../screens/Home/SettingsScreen'
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 export default function HomeStack() {
     return (
