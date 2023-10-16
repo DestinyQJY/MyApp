@@ -5,7 +5,7 @@ import styles from '../../styles/Styles'
 
 export default function SettingsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#E7F6FF' }}>
+    <View style={styles.homeContainer}>
       <TouchableOpacity
         style={{ width: 80, height: 80 }}
         onPress={() => { Alert.alert('点击头像成功\n“更换头像”功能开发中') }}
