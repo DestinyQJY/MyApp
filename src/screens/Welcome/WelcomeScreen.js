@@ -4,7 +4,7 @@ import styles from '../../styles/Styles'
 
 export default function WelcomeScreen({ navigation }) {
     return (
-        <View style={{ flex: 1, justifyContent: "center", }}>
+        <View style={styles.welcomeContainer}>
             <StatusBar hidden={true} />
             <ImageBackground
                 source={require('../../images/background.jpg')}
