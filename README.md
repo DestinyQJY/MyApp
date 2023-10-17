@@ -71,7 +71,7 @@ Remove-Item (Get-PSReadlineOption).HistorySavePath
 ## 安卓使用http的相关配置
 
 ### 创建xml文件夹及network_security_config.xml文件
-在androd/app/src/res中创建xml目录，再创建network_security_config.xml文件，然后添加：
+在androd/app/src/main/res中创建xml文件夹，再创建network_security_config.xml文件，然后添加：
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <base-config cleartextTrafficPermitted="true">
@@ -82,10 +82,20 @@ Remove-Item (Get-PSReadlineOption).HistorySavePath
 </network-security-config>
 
 ### 配置AndroidManifest.xml文件
-然后，确保您的AndroidManifest.xml文件（位于androd/app/src/main/）引用了这个网络安全配置：
+在androd/app/src/main/AndroidManifest.xml文件中引用这个网络安全配置：
 <application
-    android:networkSecurityConfig="@xml/network_security_config"
-    ...>
+    android:name=".MainApplication"
+    android:label="@string/app_name"
+    android:icon="@mipmap/ic_launcher"
+    ...
+    android:networkSecurityConfig="@xml/network_security_config">  <!-- 添加这行 -->
+    <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        ...
+        android:exported="true">
+        ...
+    </activity>
 </application>
 
 ## 清除缓存
