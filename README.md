@@ -43,21 +43,6 @@ That usually happens when you install all packages to add navigation without ter
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
 
-# 发布
-
-## 清除缓存
-npx react-native start --reset-cache
-
-## 启动模拟器
-yarn android
-
-## 生成发布版本的APK文件
-cd android
-./gradlew bundleRelease
-
-### 文件位置
-android/app/build/outputs/bundle/release/app-release.aab
-
 
 # 命令
 
@@ -78,3 +63,47 @@ npx react-native start --reset-cache
 
 ## 清除终端历史记录
 Remove-Item (Get-PSReadlineOption).HistorySavePath
+
+
+
+# 发布
+
+## 安卓使用http的相关配置
+
+### 创建xml文件夹及network_security_config.xml文件
+在androd/app/src/res中创建xml目录，再创建network_security_config.xml文件，然后添加：
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
+
+### 配置AndroidManifest.xml文件
+然后，确保您的AndroidManifest.xml文件（位于androd/app/src/main/）引用了这个网络安全配置：
+<application
+    android:networkSecurityConfig="@xml/network_security_config"
+    ...>
+</application>
+
+## 清除缓存
+npx react-native start --reset-cache
+
+## 启动模拟器
+yarn android
+
+## 生成aab文件
+cd android
+./gradlew bundleRelease
+
+### 文件位置
+android/app/build/outputs/bundle/release/app-release.aab
+
+## 生成apk文件
+cd android
+./gradlew assembleRelease
+
+### 文件位置
+android/app/build/outputs/apk/release/app-release.apk
